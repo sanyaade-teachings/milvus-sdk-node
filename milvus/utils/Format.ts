@@ -424,6 +424,11 @@ export const formatFieldSchema = (
   if (typeof field.default_value !== 'undefined') {
     const dataKey = getDataKey(createObj.dataType, true);
 
+    // format timestamptz to timestamp
+    if (createObj.dataType === DataType.Timestamptz) {
+      field.default_value = new Date(field.default_value).getTime();
+    }
+
     createObj.defaultValue = {
       [dataKey]: field.default_value,
     };

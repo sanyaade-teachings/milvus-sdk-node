@@ -251,9 +251,13 @@ export class Data extends Collection {
       // but if milvus change the string, may cause we cant find value.
       const type = DataTypeMap[field.type];
       const key = VectorDataTypes.includes(type) ? 'vectors' : 'scalars';
-      const dataKey = getDataKey(type);
+      const dataKey =
+        type === DataType.Timestamptz ? 'string_data' : getDataKey(type);
       const elementType = DataTypeMap[field.elementType!];
-      const elementTypeKey = getDataKey(elementType);
+      const elementTypeKey =
+        elementType === DataType.Timestamptz
+          ? 'string_data'
+          : getDataKey(elementType);
 
       // check if need valid data
       const needValidData =

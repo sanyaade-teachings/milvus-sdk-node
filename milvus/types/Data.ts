@@ -55,6 +55,7 @@ export type JSON = {
   [key: string]: any;
 };
 export type Geometry = string;
+export type Timestamptz = string;
 export type Array =
   | Int8[]
   | Int16[]
@@ -76,6 +77,7 @@ export type FieldData =
   | VarChar
   | JSON
   | Geometry
+  | Timestamptz
   | Array
   | VectorTypes
   | null

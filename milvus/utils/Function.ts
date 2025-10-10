@@ -5,7 +5,6 @@ import {
   FieldSchema,
   DataTypeStringEnum,
   DEFAULT_MIN_INT64,
-  SearchResultData,
   SparseFloatVector,
   FieldData,
 } from '../';
@@ -145,6 +144,9 @@ export const getDataKey = (type: DataType, camelCase: boolean = false) => {
       break;
     case DataType.Geometry:
       dataKey = 'geometry_wkt_data';
+      break;
+    case DataType.Timestamptz:
+      dataKey = 'timestamptz_data';
       break;
     case DataType.None:
       dataKey = 'none';
